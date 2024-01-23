@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { WishlistService } from './wishlist.service';
+import { WishlistService } from './wishlist/services/wishlist.service';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,6 +15,8 @@ import {MatCardModule} from '@angular/material/card';
 import {FormsModule} from '@angular/forms';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import {MatIconModule} from '@angular/material/icon';
     MatCardModule,
     FormsModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    AppRoutingModule,
+    MatProgressSpinnerModule
   ],
   providers: [HttpClientModule, WishlistService],
   bootstrap: [AppComponent]

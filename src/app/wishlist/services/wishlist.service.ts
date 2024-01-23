@@ -7,9 +7,11 @@ import { WishList } from 'src/app/models/wishlist.model';
 })
 export class WishlistService {
 
+  private readonly API = 'localhost/wishlist' 
+
   constructor(private httpClient : HttpClient) { }
 
-  list() : WishList[] {
-    return [{wishListId : 1, item : "teste", link : "teste" }];
+  list()  {
+    return this.httpClient.get<WishList[]>(this.API);
   }
 }

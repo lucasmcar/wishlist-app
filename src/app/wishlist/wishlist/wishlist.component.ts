@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { WishList } from 'src/app/models/wishlist.model';
 import { WishlistService } from '../services/wishlist.service';
 
@@ -11,7 +12,7 @@ import { WishlistService } from '../services/wishlist.service';
 export class WishlistComponent implements OnInit {
 
 
-  wishlist : WishList[] = [];
+  wishlist: Observable<WishList[]>;
 
   displayedColumns = ["item", "link"];
 
@@ -19,10 +20,11 @@ export class WishlistComponent implements OnInit {
 
   constructor(private wishListService : WishlistService){
     //this.wishListService = new WishlistService();
+    this.wishlist = this.wishListService.list();
   }
 
   ngOnInit(): void {
-    this.wishlist = this.wishListService.list();
+    
   }
 
 
