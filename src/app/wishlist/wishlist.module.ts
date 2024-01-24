@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { WishlistRoutingModule } from './wishlist-routing.module';
 import { WishlistComponent } from './wishlist/wishlist.component';
+
+import { MaterialModule } from '../material/material.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -13,7 +15,8 @@ import { WishlistComponent } from './wishlist/wishlist.component';
   imports: [
     CommonModule,
     WishlistRoutingModule,
-    MatProgressSpinnerModule
+    MaterialModule,
+    SharedModule
   ]
 })
 export class WishlistModule { }
