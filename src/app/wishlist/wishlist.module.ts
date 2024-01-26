@@ -6,11 +6,13 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 
 import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
+import { WishlistFormComponent } from './wishlist-form/wishlist-form.component';
 
 
 @NgModule({
   declarations: [
-    WishlistComponent
+    WishlistComponent,
+    WishlistFormComponent
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { WishList } from 'src/app/models/wishlist.model';
@@ -18,16 +19,19 @@ export class WishlistComponent implements OnInit {
 
   wishlist$: Observable<WishList[]>;
 
-  displayedColumns = ["item", "link"];
+  displayedColumns = ["item", "link", "actions"];
 
   //wishListService : WishlistService;
 
-  constructor(private wishListService : WishlistService, public dialog : MatDialog){
+  constructor(private wishListService : WishlistService,
+    public dialog : MatDialog,
+    private router: Router,
+    private route : ActivatedRoute){
     //this.wishListService = new WishlistService();
     this.wishlist$ = this.wishListService.list()
     .pipe(
       catchError(error => {
-        this.onError('Erro ao carregar dados')
+        this.onError('Erro ao carregar dados ')
         return of([])
       })
     );
@@ -35,6 +39,10 @@ export class WishlistComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  onAdd(){
+    this.router.navigate(['new'], {relativeTo : this.route});
   }
 
   onError(errorMessage: string) : void {

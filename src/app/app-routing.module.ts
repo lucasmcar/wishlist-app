@@ -6,10 +6,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes : Routes = [
   {
-    path: '', pathMatch : 'full', redirectTo: 'wishlists'
+    path: '', pathMatch : 'full', redirectTo: 'wishlist'
   },
   {
-    path : 'wishlists', loadChildren : () => import('./wishlist/wishlist.module').then(m => m.WishlistModule)
+    path : 'wishlist', loadChildren : () => import('./wishlist/wishlist.module').then(m => m.WishlistModule)
   }
 ];
 

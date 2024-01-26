@@ -9,7 +9,7 @@ import { tap, first } from 'rxjs/operators';
 })
 export class WishlistService {
 
-  private readonly API = 'localhost/wishlist'
+  private readonly API = 'api/wishlist'
 
   constructor(private httpClient : HttpClient) { }
 
@@ -17,7 +17,7 @@ export class WishlistService {
     return this.httpClient.get<WishList[]>(this.API)
     .pipe(
       first(),
-      tap(wishlists => console.log(wishlists))
+      tap(wishlists => wishlists),
     );
   }
 }
