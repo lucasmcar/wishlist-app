@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { first, tap } from 'rxjs/operators';
 import { WishList } from 'src/app/models/wishlist.model';
-import { tap, first } from 'rxjs/operators';
 
 
 @Injectable({
@@ -19,5 +19,10 @@ export class WishlistService {
       first(),
       tap(wishlists => wishlists),
     );
+  }
+
+  create(record: WishList){
+    return this.httpClient.post<WishList>(this.API, record )
+    .pipe(first());
   }
 }
