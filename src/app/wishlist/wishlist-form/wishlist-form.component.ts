@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ControlContainer, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-wishlist-form',
@@ -7,4 +8,17 @@ import { Component } from '@angular/core';
 })
 export class WishlistFormComponent {
 
+  form: FormGroup;
+  cardTitle = "Cadastro de item";
+
+  constructor(private formBuilder: FormBuilder){
+    this.form = this.formBuilder.group({
+      item: [null],
+      link: [null]
+    });
+  }
+
+  clear(){
+    
+  }
 }

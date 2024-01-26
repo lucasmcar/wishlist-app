@@ -24,7 +24,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatSelectModule,
     MatTabsModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    
   ],
 })
 export class MaterialModule { }

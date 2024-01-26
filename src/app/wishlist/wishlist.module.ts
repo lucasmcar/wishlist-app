@@ -7,6 +7,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
 import { WishlistFormComponent } from './wishlist-form/wishlist-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { WishlistFormComponent } from './wishlist-form/wishlist-form.component';
     CommonModule,
     WishlistRoutingModule,
     MaterialModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class WishlistModule { }
