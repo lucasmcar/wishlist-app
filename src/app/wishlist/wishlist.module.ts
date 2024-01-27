@@ -8,12 +8,14 @@ import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
 import { WishlistFormComponent } from './wishlist-form/wishlist-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { WishlistListComponent } from './wishlist-list/wishlist-list.component';
 
 
 @NgModule({
   declarations: [
     WishlistComponent,
-    WishlistFormComponent
+    WishlistFormComponent,
+    WishlistListComponent
   ],
   imports: [
     CommonModule,

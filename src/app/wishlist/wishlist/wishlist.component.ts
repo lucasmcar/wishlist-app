@@ -19,7 +19,7 @@ export class WishlistComponent implements OnInit {
 
   wishlist$: Observable<WishList[]>;
 
-  displayedColumns = ["item", "link", "actions"];
+  
 
   //wishListService : WishlistService;
 

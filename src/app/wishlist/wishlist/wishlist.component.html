@@ -1,54 +1,11 @@
-<div style="padding:6px;">
+<div style="padding:16px;">
 
-
-<div *ngIf="wishlist$ | async as wishlist; else loading">
-<table mat-table [dataSource]="wishlist" class="mat-elevation-z8">
-
-  <!-- <ng-container matColumnDef="#">
-    <th mat-header-cell *matHeaderCellDef>#</th>
-    <td mat-cell *matCellDef="let element">
-      {{element.wishListId}}
-    </td>
-  </ng-container> -->
-
-
-  <!-- Item Column -->
-  <ng-container matColumnDef="item">
-    <th mat-header-cell *matHeaderCellDef> Item </th>
-    <td mat-cell *matCellDef="let element"> {{element.item}} </td>
-  </ng-container>
-
-  <!-- Name Column -->
-  <ng-container matColumnDef="link">
-    <th mat-header-cell *matHeaderCellDef> Link</th>
-    <td mat-cell *matCellDef="let element"> {{element.link}}
-
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="actions">
-    <mat-header-cell *matHeaderCellDef>
-      <button (click)="onAdd()" mat-icon-button color="accent">
-          <mat-icon >add</mat-icon>
-      </button>
-    </mat-header-cell>
-
-    <mat-cell *matCellDef="let element">
-      <button mat-icon-button color="primary">
-        <mat-icon>edit</mat-icon>
-    </button>
-
-      <button mat-icon-button color="warn">
-        <mat-icon>delete</mat-icon>
-    </button>
-    </mat-cell>
-  </ng-container>
-
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-</div>
+  
+  <app-wishlist-list
+    *ngIf="wishlist$ | async as wishlist; else loading"
+    [wishlist]="wishlist"
+    >
+  </app-wishlist-list>
 
 <ng-template #loading>
   <div class="loading-spinner">
