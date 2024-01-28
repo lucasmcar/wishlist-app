@@ -19,7 +19,7 @@ export class WishlistComponent implements OnInit {
 
   wishlist$: Observable<WishList[]>;
 
-  
+
 
   //wishListService : WishlistService;
 
@@ -41,8 +41,12 @@ export class WishlistComponent implements OnInit {
 
   }
 
-  onAdd(){
+  onAdd() : void{
     this.router.navigate(['new'], {relativeTo : this.route});
+  }
+
+  onEdit(wishList: WishList) {
+    this.router.navigate(['edit', wishList.wishListId], {relativeTo : this.route});
   }
 
   onError(errorMessage: string) : void {

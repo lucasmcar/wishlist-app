@@ -12,15 +12,16 @@ import { WishlistService } from '../services/wishlist.service';
 export class WishlistFormComponent {
 
   form: FormGroup;
-  cardTitle = "Cadastro de item";
+  cardTitle = "Cadastro de Items";
 
   constructor(private formBuilder: FormBuilder,
     private snackbar: MatSnackBar,
     private location: Location,
     private serviceWishlist : WishlistService){
     this.form = this.formBuilder.group({
-      item: [null],
-      link: [null]
+      wishlistId : [''],
+      item: [''],
+      link: ['']
     });
   }
 

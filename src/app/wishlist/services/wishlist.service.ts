@@ -25,4 +25,8 @@ export class WishlistService {
     return this.httpClient.post<WishList>(this.API, record )
     .pipe(first());
   }
+
+  loadByid( id: string ) {
+    return this.httpClient.get<WishList>(`${this.API}/${id}`)
+  }
 }

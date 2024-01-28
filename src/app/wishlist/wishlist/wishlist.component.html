@@ -1,9 +1,11 @@
 <div style="padding:16px;">
 
-  
+
   <app-wishlist-list
     *ngIf="wishlist$ | async as wishlist; else loading"
     [wishlist]="wishlist"
+    (add)="onAdd()"
+    (edit)="onEdit($event)"
     >
   </app-wishlist-list>
 

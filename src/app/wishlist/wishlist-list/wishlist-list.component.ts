@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WishList } from 'src/app/models/wishlist.model';
 
@@ -11,8 +11,10 @@ export class WishlistListComponent implements OnInit {
 
   readonly displayedColumns = ["item", "link", "actions"];
   @Input() wishlist : WishList[] = [];
+  @Output() add = new EventEmitter()
+  @Output() edit = new EventEmitter()
 
-  constructor(private router : Router, private route: ActivatedRoute){
+  constructor(){
 
   }
 
@@ -21,7 +23,11 @@ export class WishlistListComponent implements OnInit {
   }
 
   onAdd() : void{
-    this.router.navigate(['new'], {relativeTo : this.route})
+    this.add.emit(true);
+  }
+
+  onEdit(wishList: WishList) : void {
+    this.edit.emit(wishList);
   }
 
 }

@@ -10,6 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [],
@@ -25,7 +26,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatTabsModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    
+    MatDividerModule
   ],
 })
 export class MaterialModule { }

@@ -40,13 +40,13 @@
         </mat-header-cell>
 
         <mat-cell *matCellDef="let element">
-          <button mat-icon-button color="primary">
+          <button mat-icon-button color="primary" (click)="onEdit(element)">
             <mat-icon>edit</mat-icon>
-        </button>
+          </button>
 
           <button mat-icon-button color="warn">
             <mat-icon>delete</mat-icon>
-        </button>
+          </button>
         </mat-cell>
       </ng-container>
 
