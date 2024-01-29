@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { first, tap } from 'rxjs/operators';
 import { WishList } from 'src/app/models/wishlist.model';
 
@@ -40,4 +41,9 @@ export class WishlistService {
   private update( record:  WishList ){
     return this.httpClient.put<WishList>(`${this.API}/${record.wishListId}`, record).pipe(first());
   }
+
+  delete( id: string){
+    return this.httpClient.delete<WishList>(`${this.API}/${id}`).pipe(first());
+  }
+
 }

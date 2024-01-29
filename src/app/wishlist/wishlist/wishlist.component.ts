@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -17,7 +18,7 @@ import { WishlistService } from '../services/wishlist.service';
 export class WishlistComponent implements OnInit {
 
 
-  wishlist$: Observable<WishList[]>;
+  wishlist$: Observable<WishList[]> | null = null;
 
 
 
@@ -26,15 +27,10 @@ export class WishlistComponent implements OnInit {
   constructor(private wishListService : WishlistService,
     public dialog : MatDialog,
     private router: Router,
-    private route : ActivatedRoute){
+    private route : ActivatedRoute,
+    private snackbar: MatSnackBar){
     //this.wishListService = new WishlistService();
-    this.wishlist$ = this.wishListService.list()
-    .pipe(
-      catchError(error => {
-        this.onError('Erro ao carregar dados ')
-        return of([])
-      })
-    );
+    this.refresh()
   }
 
   ngOnInit(): void {
@@ -45,8 +41,35 @@ export class WishlistComponent implements OnInit {
     this.router.navigate(['new'], {relativeTo : this.route});
   }
 
+  private refresh (){
+    this.wishlist$ = this.wishListService.list()
+    .pipe(
+      catchError(error => {
+        this.onError('Erro ao carregar dados ')
+        return of([])
+      })
+    );
+  }
+
   onEdit(wishList: WishList) {
     this.router.navigate(['edit', wishList.wishListId], {relativeTo : this.route});
+  }
+
+  onDelete(wishList : WishList){
+    this.wishListService.delete(wishList.wishListId)
+    .subscribe(
+      () => {
+        this.refresh();
+        this.snackbar.open(
+          'Lista apagada com sucesso',
+          'Fechar', {
+            duration: 5000,
+            verticalPosition: 'top',
+            horizontalPosition: 'center'
+          });
+      },
+      () => this.onError('Erro ao tentar remover curso')
+    );
   }
 
   onError(errorMessage: string) : void {
@@ -54,6 +77,7 @@ export class WishlistComponent implements OnInit {
       data : errorMessage
     });
   }
+
 
 
 }

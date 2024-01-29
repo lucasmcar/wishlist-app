@@ -13,6 +13,7 @@ export class WishlistListComponent implements OnInit {
   @Input() wishlist : WishList[] = [];
   @Output() add = new EventEmitter()
   @Output() edit = new EventEmitter()
+  @Output() delete = new EventEmitter()
 
   constructor(){
 
@@ -28,6 +29,10 @@ export class WishlistListComponent implements OnInit {
 
   onEdit(wishList: WishList) : void {
     this.edit.emit(wishList);
+  }
+
+  onDelete(wishList: WishList) : void {
+    this.delete.emit(wishList);
   }
 
 }

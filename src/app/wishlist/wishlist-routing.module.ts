@@ -12,7 +12,8 @@ export const routes: Routes = [
   },
   {path : 'edit/:id', component : WishlistFormComponent, resolve : {
     wishlist : WishlistResolverResolver}
-  }
+  },
+
 ];
 
 @NgModule({
