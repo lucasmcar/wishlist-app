@@ -17,11 +17,16 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
+
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -36,7 +41,6 @@ import { AppRoutingModule } from './app-routing.module';
     MatToolbarModule,
     MatIconModule,
     AppRoutingModule,
-    MatProgressSpinnerModule
   ],
   providers: [HttpClientModule, WishlistService],
   bootstrap: [AppComponent]

@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { WishlistFormComponent } from './wishlist-form/wishlist-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { WishlistListComponent } from './wishlist-list/wishlist-list.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { WishlistListComponent } from './wishlist-list/wishlist-list.component';
     CommonModule,
     WishlistRoutingModule,
     MaterialModule,
+    MatToolbarModule,
     SharedModule,
     ReactiveFormsModule
   ]

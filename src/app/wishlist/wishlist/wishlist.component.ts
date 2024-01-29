@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { WishList } from 'src/app/models/wishlist.model';
+import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 
 import { WishlistService } from '../services/wishlist.service';
@@ -56,20 +57,33 @@ export class WishlistComponent implements OnInit {
   }
 
   onDelete(wishList : WishList){
-    this.wishListService.delete(wishList.wishListId)
-    .subscribe(
-      () => {
-        this.refresh();
-        this.snackbar.open(
-          'Lista apagada com sucesso',
-          'Fechar', {
-            duration: 5000,
-            verticalPosition: 'top',
-            horizontalPosition: 'center'
-          });
-      },
-      () => this.onError('Erro ao tentar remover curso')
-    );
+
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: 'Deseja confirmar a remoção dessa lista?',
+    });
+
+    dialogRef.afterClosed().subscribe((result : boolean) => {
+
+
+      if(result){
+        this.wishListService.delete(wishList.wishListId)
+        .subscribe(
+          () => {
+            this.refresh();
+            this.snackbar.open(
+              'Lista apagada com sucesso',
+              'Fechar', {
+                duration: 5000,
+                verticalPosition: 'top',
+                horizontalPosition: 'center'
+              });
+          },
+          () => this.onError('Erro ao tentar remover curso')
+        );
+      }
+
+
+    });
   }
 
   onError(errorMessage: string) : void {

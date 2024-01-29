@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ControlContainer, FormBuilder, FormGroup } from '@angular/forms';
+import { ControlContainer, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { WishList } from 'src/app/models/wishlist.model';
@@ -23,8 +23,8 @@ export class WishlistFormComponent implements OnInit{
     private route : ActivatedRoute){
     this.form = this.formBuilder.group({
       wishListId: [''],
-      item: [''],
-      link: ['']
+      item: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(100)]],
+      link: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(150)]]
     });
   }
   ngOnInit(): void {
@@ -34,6 +34,28 @@ export class WishlistFormComponent implements OnInit{
       item : wishList.item,
       link : wishList.link
     });
+  }
+
+  getErrorMessage(fieldName: string) {
+    const field = this.form.get(fieldName);
+      if(field?.hasError('required')){
+        return 'Campo obrigaório';
+      }
+
+      if(field?.hasError('minlength')){
+        const requiredLength = field.errors ? field.errors['minlength']['requiredLength'] : 10;
+
+        return `Tamanho minimo: ${requiredLength} caracteres`;
+      }
+
+      if(field?.hasError('maxlength')){
+        const requiredLength = field.errors ? field.errors['maxlength']['requiredLength'] : 100;
+
+        return `Tamanho máximo: ${requiredLength} caracteres`;
+      }
+
+
+      return 'Campo Inválido';
   }
 
   clear(){

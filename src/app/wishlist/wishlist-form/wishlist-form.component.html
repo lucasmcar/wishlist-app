@@ -4,18 +4,21 @@
       {{ cardTitle }}
     </mat-card-title>
     <mat-card-subtitle>
-      
+
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <form [formGroup]="form" style="margin-top: 16px;">
       <mat-form-field class="full-width">
-
-        <input matInput placeholder="Item" formControlName="item" >
+        <input matInput placeholder="Item" formControlName="item" required #item>
+          <mat-hint align="end">{{item.value.length}}/100</mat-hint>
+          <mat-error *ngIf="form.get('item')?.invalid n">{{getErrorMessage('item')}}</mat-error>
       </mat-form-field>
       <mat-form-field class="full-width">
 
         <input matInput placeholder="Link ou Loja" formControlName="link" >
+        <mat-hint align="end">{{item.value.length}}/160</mat-hint>
+        <mat-error *ngIf="form.get('link')?.invalid n">{{getErrorMessage('link')}}</mat-error>
       </mat-form-field>
     </form>
   </mat-card-content>
