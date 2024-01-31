@@ -16,8 +16,8 @@
       </mat-form-field>
       <mat-form-field class="full-width">
 
-        <input matInput placeholder="Link ou Loja" formControlName="link" >
-        <mat-hint align="end">{{item.value.length}}/160</mat-hint>
+        <input matInput placeholder="Link ou Loja" formControlName="link" required #link >
+        <mat-hint align="end">{{link.value.length}}/160</mat-hint>
         <mat-error *ngIf="form.get('link')?.invalid n">{{getErrorMessage('link')}}</mat-error>
       </mat-form-field>
     </form>

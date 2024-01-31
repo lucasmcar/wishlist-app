@@ -46,7 +46,7 @@ export class WishlistComponent implements OnInit {
     this.wishlist$ = this.wishListService.list()
     .pipe(
       catchError(error => {
-        this.onError('Erro ao carregar dados ')
+        this.onError('Erro ao carregar itens ')
         return of([])
       })
     );
@@ -59,7 +59,7 @@ export class WishlistComponent implements OnInit {
   onDelete(wishList : WishList){
 
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      data: 'Deseja confirmar a remoção dessa lista?',
+      data: 'Deseja confirmar a remoção desse item?',
     });
 
     dialogRef.afterClosed().subscribe((result : boolean) => {
@@ -71,14 +71,14 @@ export class WishlistComponent implements OnInit {
           () => {
             this.refresh();
             this.snackbar.open(
-              'Lista apagada com sucesso',
+              'Item apagado com sucesso',
               'Fechar', {
                 duration: 5000,
                 verticalPosition: 'top',
                 horizontalPosition: 'center'
               });
           },
-          () => this.onError('Erro ao tentar remover curso')
+          () => this.onError('Erro ao tentar remover item')
         );
       }
 
